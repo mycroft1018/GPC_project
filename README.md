@@ -11,93 +11,93 @@ Due to the need for confidentiality, i won't provide the whole part of GPC_code 
 #amount extraction
 ----
 from bs4 import BeautifulSoup  
-def append_new(html,html_list,order,every,obj_list):
-    if html_list.index(html) not in order and every != "":
-        order.append(html_list.index(html))
-        obj_list.append(every)
-        print(every)
-        print(html_list.index(html))
-def han(x_new):
-    if x_new=="":
-     return "."
-    m1 = []
-    xlen = len(x_new)
-    keywords2 = ["壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖", "拾", "佰", "仟","万","圆","元","零"]
-    for num in range(0,xlen-1):
-        for symbol in keywords2 :
-            if x_new[num]=="圆" and x_new[num+1]=="万" or  x_new[num]=="圆" and x_new[num+1]=="元":
-               x_new[num + 1]=""
-            else:
-             if x_new[num]==symbol and x_new[num+1] in keywords2:
-                m1.append(x_new[num]) 
-    amount1 = ''.join(m1)
-    amount1=amount1+"元"
-    return amount1    
-def arabia(x_new):
-    m2 = []
-    if x_new=="":
-     return "."
-    #keywords1 = ["万", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "元"]
-    keywords1= ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", ","]
-    if "元" in x_new and "%" in x_new:
-          #index(symbol)
-          if x_new.find("元")> x_new.find("%"):
-              x_new = x_new[x_new.find("%")+1:]
-          else:
-              x_new = x_new[0:x_new.find("%")+1]
-    else:
-        x_new=x_new
-    mark=len(x_new)-1   
-    if x_new[len(x_new)-1]=="元":
-        for num in range(0, len(x_new) - 1):
-            mark=mark-1
-            if x_new[mark] in keywords1 and x_new[mark-1] not in keywords1:
-               break
-        x_new=x_new[mark:]
-    if "万元" in x_new :  #and x_new[x_new.index("万元")-1] in keywords1
-        for num in range(0, len(x_new) - 1):
-          for symbol in keywords1:
-            if x_new[num] == symbol :#and x_new[num + 1] in keywords1 and x_new[num + 2] in  keywords1
-                m2.append(x_new[num])
-            # if x_new[num] == symbol and x_new[num + 1] in keywords1 and x_new[num + 2] not in keywords1:
-            #     if x_new[num - 1] in keywords1:
-    else:
-        for num in range(0,len(x_new) - 3):
-            for symbol in keywords1:
-                if x_new[num] == symbol and x_new[num + 1] in keywords1 and x_new[num + 2] in keywords1 and x_new[num + 3] in keywords1:
-                    m2.append(x_new[num])
-                if x_new[num] == symbol and x_new[num + 1] in keywords1 and x_new[num + 2] in keywords1 and x_new[num + 3] not in keywords1:
-                    if x_new[num-1] in keywords1:
-                     m2.append(x_new[num])
-                     m2.append(x_new[num+1])
-                     m2.append(x_new[num + 2])
-    amount1 = ''.join(m2)
-    if "万元" in x_new and "万元" not in amount1 :
-         amount1 = amount1 + "万元"
-         return amount1
-    if "元" in x_new and "元" not in amount1 :
-         amount1 = amount1 + "元"
-         return amount1
-    if "万" in x_new and "万" not in amount1 :
-        amount1 = amount1 + "万"
-        return amount1
-    if amount1 == "":
-        amount1 = "."
-        return amount1
-    return amount1
-def arabia_percentile(x_new):
-    if x_new=="":
-     return "."
-    m2 = []
-    b=0
-    xlen = len(x_new)
-    # keywords1 = ["万", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "元"]
-    keywords1 = ["%", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."]
-    for num in range(0, xlen - 1):
-        for symbol in keywords1:
-            if x_new[num] == symbol and x_new[num + 1] in keywords1:
-                m2.append(x_new[num])
-                b+=1
+def append_new(html,html_list,order,every,obj_list):  
+    if html_list.index(html) not in order and every != "":  
+        order.append(html_list.index(html))  
+        obj_list.append(every)  
+        print(every)  
+        print(html_list.index(html))  
+def han(x_new):  
+    if x_new=="":  
+     return "."  
+    m1 = []  
+    xlen = len(x_new)  
+    keywords2 = ["壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖", "拾", "佰", "仟","万","圆","元","零"]  
+    for num in range(0,xlen-1):  
+        for symbol in keywords2 :  
+            if x_new[num]=="圆" and x_new[num+1]=="万" or  x_new[num]=="圆" and x_new[num+1]=="元":  
+               x_new[num + 1]=""  
+            else:  
+             if x_new[num]==symbol and x_new[num+1] in keywords2:  
+                m1.append(x_new[num])   
+    amount1 = ''.join(m1)  
+    amount1=amount1+"元"  
+    return amount1      
+def arabia(x_new):  
+    m2 = []  
+    if x_new=="":  
+     return "."  
+    #keywords1 = ["万", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "元"]  
+    keywords1= ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", ","]  
+    if "元" in x_new and "%" in x_new:  
+          #index(symbol)  
+          if x_new.find("元")> x_new.find("%"):  
+              x_new = x_new[x_new.find("%")+1:]  
+          else:  
+              x_new = x_new[0:x_new.find("%")+1]  
+    else:  
+        x_new=x_new  
+    mark=len(x_new)-1     
+    if x_new[len(x_new)-1]=="元":  
+        for num in range(0, len(x_new) - 1):  
+            mark=mark-1  
+            if x_new[mark] in keywords1 and x_new[mark-1] not in keywords1:  
+               break  
+        x_new=x_new[mark:]  
+    if "万元" in x_new :  #and x_new[x_new.index("万元")-1] in keywords1  
+        for num in range(0, len(x_new) - 1):  
+          for symbol in keywords1:  
+            if x_new[num] == symbol :#and x_new[num + 1] in keywords1 and x_new[num + 2] in  keywords1  
+                m2.append(x_new[num])  
+            # if x_new[num] == symbol and x_new[num + 1] in keywords1 and x_new[num + 2] not in keywords1:  
+            #     if x_new[num - 1] in keywords1:  
+    else:  
+        for num in range(0,len(x_new) - 3):  
+            for symbol in keywords1:  
+                if x_new[num] == symbol and x_new[num + 1] in keywords1 and x_new[num + 2] in keywords1 and x_new[num + 3] in keywords1:  
+                    m2.append(x_new[num])  
+                if x_new[num] == symbol and x_new[num + 1] in keywords1 and x_new[num + 2] in keywords1 and x_new[num + 3] not in keywords1:  
+                    if x_new[num-1] in keywords1:  
+                     m2.append(x_new[num])  
+                     m2.append(x_new[num+1])  
+                     m2.append(x_new[num + 2])  
+    amount1 = ''.join(m2)  
+    if "万元" in x_new and "万元" not in amount1 :  
+         amount1 = amount1 + "万元"  
+         return amount1  
+    if "元" in x_new and "元" not in amount1 :  
+         amount1 = amount1 + "元"  
+         return amount1  
+    if "万" in x_new and "万" not in amount1 :  
+        amount1 = amount1 + "万"  
+        return amount1  
+    if amount1 == "":  
+        amount1 = "."  
+        return amount1  
+    return amount1  
+def arabia_percentile(x_new):  
+    if x_new=="":  
+     return "."  
+    m2 = []  
+    b=0  
+    xlen = len(x_new)  
+    # keywords1 = ["万", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "元"]  
+    keywords1 = ["%", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."]  
+    for num in range(0, xlen - 1):  
+        for symbol in keywords1:  
+            if x_new[num] == symbol and x_new[num + 1] in keywords1:  
+                m2.append(x_new[num])  
+                b+=1  
     amount1 = ''.join(m2)
     if "%" in x_new:
      amount1 = amount1 + "%"
