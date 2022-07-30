@@ -35,10 +35,8 @@ def han(x_new):
                 
     amount1 = ''.join(m1)
     amount1=amount1+"元"
-    return amount1
-
+    return amount1       <br>
 def arabia(x_new):
-
     m2 = []
     if x_new=="":
      return "."
