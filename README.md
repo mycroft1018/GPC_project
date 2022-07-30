@@ -1,12 +1,16 @@
 GPC_project
 ==
-the use for this module is to extract the amount data from China government procurement contracts (before 2012)
+The use for this module is to extract the amount data from China government procurement contracts (before 2012)
 ----
-this text provide a basic function of GPC-database-extraction code, i wrote this code mostly by myself
-beacuse my major is econ and my code skills is rather lame, this code is easy and simple, the extraction result is also rather mundane
-due to the need for confidentiality, i won't provide the whole part of GPC_code or the py file
+This text provide a basic function of GPC-database-extraction code, i wrote this code mostly by myself
+----
+Beacuse my major is econ and my code skills is rather lame, this code is easy and simple, the extraction result is also rather mundane
+----
+Due to the need for confidentiality, i won't provide the whole part of GPC_code or the py file
+----
 
-amount extraction
+#amount extraction
+----
 
 from bs4 import BeautifulSoup
 def append_new(html,html_list,order,every,obj_list):
@@ -113,15 +117,7 @@ def arabia_percentile(x_new):
     if b == 0:
        amount1 = "."
     return amount1
-    # id = 'WeWillbeTogetherForeverbe13093128'
-    # pos = id.find('be')
-    # count = 0  # 此处id.find返回的参数为字符在其出现的位置
-    # while pos != -1:
-    #     count = count + 1
-    #     print(pos)
-    #     print(id[pos + len("be"):pos + len("be") + 15])
-    #     pos = (id.find('be', pos + 1))
-    # # print('be共出现了{}次'.format(id.count('be')))
+    
 def exclude(x_new):
    if "%" in x_new:
        return arabia_percentile(x_new)
@@ -196,7 +192,7 @@ amount_symbol = ["金额","￥","价","公司"]
 keywords1 = ["万", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "元"]
 keywords2 = ["壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖", "拾", "佰", "仟", "万", "圆", "元","零"]
 amount_symbol1 = ["壹","贰","叁","肆","伍","陆","柒","捌","玖","拾","佰","仟","万","1","2","3","4","5","6","7","8","9","0","."]
-#第1包（也就是标包1 、第一标段、标段1 、A包、第一包等等）
+
 for i in content_html[:crawl_number]:
     print("第"+str(m)+"html文件")
     m+=1
