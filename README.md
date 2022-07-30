@@ -47,7 +47,6 @@ def arabia(x_new):
               x_new = x_new[0:x_new.find("%")+1]
     else:
         x_new=x_new
-
     mark=len(x_new)-1   
     if x_new[len(x_new)-1]=="元":
         for num in range(0, len(x_new) - 1):
@@ -55,7 +54,6 @@ def arabia(x_new):
             if x_new[mark] in keywords1 and x_new[mark-1] not in keywords1:
                break
         x_new=x_new[mark:]
-
     if "万元" in x_new :  #and x_new[x_new.index("万元")-1] in keywords1
         for num in range(0, len(x_new) - 1):
           for symbol in keywords1:
@@ -73,9 +71,7 @@ def arabia(x_new):
                      m2.append(x_new[num])
                      m2.append(x_new[num+1])
                      m2.append(x_new[num + 2])
-
     amount1 = ''.join(m2)
-
     if "万元" in x_new and "万元" not in amount1 :
          amount1 = amount1 + "万元"
          return amount1
@@ -85,12 +81,10 @@ def arabia(x_new):
     if "万" in x_new and "万" not in amount1 :
         amount1 = amount1 + "万"
         return amount1
-
     if amount1 == "":
         amount1 = "."
         return amount1
     return amount1
-
 def arabia_percentile(x_new):
     if x_new=="":
      return "."
@@ -110,11 +104,9 @@ def arabia_percentile(x_new):
     if b == 0:
        amount1 = "."
     return amount1
-    
 def exclude(x_new):
    if "%" in x_new:
        return arabia_percentile(x_new)
-
    if len(han(x_new)) >= 3:
        return han(x_new)
    else:
@@ -131,13 +123,11 @@ def exclude(x_new):
                     return arabia_percentile(x_new)
                 else:
                     return "."
-
 def clear(x_new):
        # str.replace(u’\xa0’, u’ ‘)
        # str.replace(u’\u3000’, u’ ‘)
         x_new= x_new.replace("\u3000", "").replace("\xa0", "").replace("，", "").replace(",", "")
         return x_new
-
 def amount_stop(x_new):
     global num
     keywords1 = ["%", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", ",", "，"]
@@ -175,7 +165,6 @@ def delete_wrong_num(x_new):
             return x_new
          else:
              return x_new
-
 amount_new = []
 case_order_amount_new = []
 amount_every_new = "."
@@ -185,7 +174,6 @@ amount_symbol = ["金额","￥","价","公司"]
 keywords1 = ["万", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "元"]
 keywords2 = ["壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖", "拾", "佰", "仟", "万", "圆", "元","零"]
 amount_symbol1 = ["壹","贰","叁","肆","伍","陆","柒","捌","玖","拾","佰","仟","万","1","2","3","4","5","6","7","8","9","0","."]
-
 for i in content_html[:crawl_number]:
     print("第"+str(m)+"html文件")
     m+=1
@@ -221,7 +209,6 @@ for i in content_html[:crawl_number]:
                             append_new(i, content_html, case_order_amount_new, amount_every_new, amount_new)
                             pos = (i_txt.find(symbol, pos + 1))
                             break
-
                         else:
                             amount_every_new = i_txt[pos + len(symbol):]
                             print("pos2是" + str(pos))
@@ -270,21 +257,15 @@ for i in content_html[:crawl_number]:
                             flag = 1
                             break
                         else:
-                            # if len(amount_every_new) < 3 and amount_every_new[0] not in keywords1 or amount_every_new[0] not in keywords2 and amount_every_new[0]!="废" and amount_every_new[0]!="多":
-                            #    print(pos)
-                            #    pos = (i_txt.find(symbol, pos + 1))
-                            #    print("没找到合适的金额，准备跳出2")
                             amount_every_new = i_txt[pos + len(symbol) - 20:pos + len(symbol)]
                             print("symbol反向输出" + symbol)
                             print("金额反向输出" + amount_every_new)
                             amount_every_new = clear(amount_every_new)
                             amount_every_new = exclude(amount_every_new)
-
                             if len(amount_every_new) >= 4 or len(amount_every_new) >= 2 and "%" in amount_every_new:
                                 print("找了五次才找到了理想金额,金额输出" + amount_every_new)
                                 amount_every_new = delete_wrong_num(amount_every_new)
                                 append_new(i, content_html, case_order_amount_new, amount_every_new, amount_new)
-
                                 pos = (i_txt.find(symbol, pos + 1))
                                 flag = 1
                                 break
@@ -292,9 +273,7 @@ for i in content_html[:crawl_number]:
                                 amount_every_new = "."
                                 amount_every_new = delete_wrong_num(amount_every_new)
                                 append_new(i, content_html, case_order_amount_new, amount_every_new, amount_new)
-
                                 pos = (i_txt.find(symbol, pos + 1))
-
                             break
                 if flag == 1:
                     print("flag为1，金额是" + str(amount_every_new))
