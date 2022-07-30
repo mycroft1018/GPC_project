@@ -10,7 +10,7 @@ Due to the need for confidentiality, i won't provide the whole part of GPC_code 
 ----
 #amount extraction
 ----
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup  
 def append_new(html,html_list,order,every,obj_list):
     if html_list.index(html) not in order and every != "":
         order.append(html_list.index(html))
