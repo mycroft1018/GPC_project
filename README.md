@@ -8,10 +8,8 @@ Beacuse my major is econ and my code skills is rather lame, this code is easy an
 ----
 Due to the need for confidentiality, i won't provide the whole part of GPC_code or the py file
 ----
-
 #amount extraction
 ----
-
 from bs4 import BeautifulSoup
 def append_new(html,html_list,order,every,obj_list):
     if html_list.index(html) not in order and every != "":
@@ -31,11 +29,10 @@ def han(x_new):
                x_new[num + 1]=""
             else:
              if x_new[num]==symbol and x_new[num+1] in keywords2:
-                m1.append(x_new[num])
-                
+                m1.append(x_new[num]) 
     amount1 = ''.join(m1)
     amount1=amount1+"元"
-    return amount1       <br>
+    return amount1    
 def arabia(x_new):
     m2 = []
     if x_new=="":
