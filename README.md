@@ -1,10 +1,12 @@
-# GPC_project
-# the use for this module is to extract the amount data from China government procurement contracts (before 2012)
-# this text provide a basic function of GPC-database-extraction code, i wrote this code mostly by myself
-# beacuse my major is econ and my code skills is rather lame, this code is easy and simple, the extraction result is also rather mundane
-# due to the need for confidentiality, i won't provide the whole part of GPC_code or the py file
-# %%
-# amount extraction
+GPC_project
+==
+the use for this module is to extract the amount data from China government procurement contracts (before 2012)
+----
+this text provide a basic function of GPC-database-extraction code, i wrote this code mostly by myself
+beacuse my major is econ and my code skills is rather lame, this code is easy and simple, the extraction result is also rather mundane
+due to the need for confidentiality, i won't provide the whole part of GPC_code or the py file
+
+amount extraction
 
 from bs4 import BeautifulSoup
 def append_new(html,html_list,order,every,obj_list):
