@@ -32,9 +32,7 @@ def han(x_new):
             else:
              if x_new[num]==symbol and x_new[num+1] in keywords2:
                 m1.append(x_new[num])
-            # else:
-            #     m1.append(x_new[num+1])
-            # break
+                
     amount1 = ''.join(m1)
     amount1=amount1+"元"
     return amount1
