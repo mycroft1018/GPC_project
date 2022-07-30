@@ -4,7 +4,8 @@
 # beacuse my major is econ and my code skills is rather lame, this code is easy and simple, the extraction result is also rather mundane
 # due to the need for confidentiality, i won't provide the whole part of GPC_code or the py file
 # %%
-#amount extraction
+# amount extraction
+
 from bs4 import BeautifulSoup
 def append_new(html,html_list,order,every,obj_list):
     if html_list.index(html) not in order and every != "":
