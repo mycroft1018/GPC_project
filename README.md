@@ -40,7 +40,7 @@ def han(x_new):
     return amount1
 
 def arabia(x_new):
-    #读取进入的元素，对于没有单位的，连续三个数字以上才会识别数字；
+
     m2 = []
     if x_new=="":
      return "."
@@ -55,7 +55,7 @@ def arabia(x_new):
     else:
         x_new=x_new
 
-    mark=len(x_new)-1   #抓到元后向前读
+    mark=len(x_new)-1   
     if x_new[len(x_new)-1]=="元":
         for num in range(0, len(x_new) - 1):
             mark=mark-1
@@ -130,7 +130,7 @@ def exclude(x_new):
        else:
            if len(arabia(x_new)) >=20:
                if "." in x_new:
-                 return arabia(x_new[0:x_new.index(".")+4])   #保留"."后两位
+                 return arabia(x_new[0:x_new.index(".")+4])
                else:
                  return "."
            else:
@@ -210,7 +210,7 @@ for i in content_html[:crawl_number]:
             flag = 0
             if symbol in i_txt:
                 print("关键词是" + symbol)
-                pos = i_txt.find(symbol)  ##循环定位关键字，找不到合适的接着找
+                pos = i_txt.find(symbol) 
                 while pos != -1:
                     flag = 0
                     print("flag是" + str(flag))
